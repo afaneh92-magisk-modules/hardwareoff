@@ -10,18 +10,11 @@ original_keystore="/bin/keystore"
 replace_path="$MODPATH/system/bin"
 hardware=$(getprop ro.hardware)
 
-ui_print "- Checking Android version..."
-if [[ "$hardware" == "qcom" ]]; then
-  # qcom
-  pre="0074696d657374616d7000636f6d2e"
-  post="0000696d657374616d7000636f6d2e"
-else
-  # exynos
-  pre="0074696d657374616d7000616e6472"
-  post="0000696d657374616d7000616e6472"
-fi
+# hex pattern
+pre="0074696d657374616d7000"
+post="0000696d657374616d7000"
 
-ui_print "- Found Android $os, Start patching..."
+ui_print "- Start patching..."
 mkdir -p $replace_path
 cp -f -p $original_keystore $replace_path
 set_perm_recursive $replace_path 0 0 0755 0755
