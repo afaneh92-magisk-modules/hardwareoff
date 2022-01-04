@@ -2,7 +2,7 @@ SKIPUNZIP=1
 
 # Extract files
 ui_print "- Extracting module files"
-unzip -o "$ZIPFILE" module.prop system.prop -d $MODPATH >&2
+unzip -o "$ZIPFILE" module.prop post-fs-data.sh system.prop -d $MODPATH >&2
 
 ctsProfile() {
   # Bootloader string
@@ -36,6 +36,9 @@ else
   rm -rf $MODPATH
   abort
 fi
+
+# Set executable permissions
+set_perm_recursive "$MODPATH" 0 0 0755 0755
 
 # Needed in Google's device-based testing stage.
 ctsProfile
