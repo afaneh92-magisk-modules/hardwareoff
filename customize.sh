@@ -36,13 +36,13 @@ cp -f -p $original_keystore $replace_path
 set_perm_recursive $replace_path 0 0 0755 0755
 if `/data/adb/magisk/magiskboot hexpatch $patched_keystore $pre $post` ; then
   ui_print "- Successfully patched keystore!"
-  # Needed in Google's device-based testing stage.
-  #evaltype
 elif [ -d "/data/adb/modules/hardwareoff" ]; then
   ui_print "- keystore already patched!"
-  evaltype
 else
   ui_print "- Not found hex pattern in keystore, Aborting..."
   rm -rf $MODPATH
   abort
 fi
+
+# Needed in Google's device-based testing stage.
+#evaltype
