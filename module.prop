@@ -1,6 +1,6 @@
 id=hardwareoff
 name=HARDWARE OFF
-version=V6.1
-versionCode=61
+version=V6.2
+versionCode=62
 author=afaneh92, Blue cat [4PDA], Displax [4PDA], kdrag0n, edzambler, stang5litre
 description=Resets SafetyNet evalType from HARDWARE -> BASIC, fix for SafetyNet on Snapdragon/Exynos devices with hardware attestation.
