@@ -1,6 +1,6 @@
 id=hardwareoff
 name=HARDWARE OFF
-version=V1.0
-versionCode=1
+version=V1.3
+versionCode=13
 author=Displax [4PDA], afaneh92
 description=Resets SafetyNet evalType from HARDWARE -> BASIC
