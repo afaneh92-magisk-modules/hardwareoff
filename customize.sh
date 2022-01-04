@@ -2,23 +2,16 @@ SKIPUNZIP=1
 
 # Extract files
 ui_print "- Extracting module files"
-unzip -o "$ZIPFILE" module.prop -d $MODPATH >&2
+unzip -o "$ZIPFILE" module.prop system.prop -d $MODPATH >&2
 
-evaltype() {
-  unzip -o "$ZIPFILE" system.prop -d $MODPATH >&2
+ctsProfile() {
   # Bootloader string
   BL=$(getprop ro.boot.bootloader);
   # Device is first 5 characters of bootloader string.
   DEVICE=${BL:0:5};
-  DEVICEVARIANT=${BL:4:1};
-  # Zero last character of device string.
-  DEVICEOFF=${DEVICE%?}0;
-  # U last character of device string for HK devices.
-  [ "$DEVICEVARIANT" = "0" ] && DEVICEOFF=${DEVICE%?}U;
-  # N last character of device string for International devices.
-  [ "$DEVICEVARIANT" = "B" ] && DEVICEOFF=${DEVICE%?}N;
-  # Replace BASIC string with DEVICEOFF string.
-  sed -i "s/BASIC/SM\-${DEVICEOFF}/g" $MODPATH/system.prop;
+  # Append a space to the device string.
+  # Replace BASIC and append a space to the device string.
+  sed -i "s/BASIC/ SM\-${DEVICE}/g" $MODPATH/system.prop;
 }
 
 # Paths
@@ -45,4 +38,4 @@ else
 fi
 
 # Needed in Google's device-based testing stage.
-#evaltype
+ctsProfile
