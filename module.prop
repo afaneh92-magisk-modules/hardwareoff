@@ -1,6 +1,6 @@
 id=hardwareoff
 name=HARDWARE OFF
-version=V2.0
-versionCode=20
+version=V2.1
+versionCode=21
 author=afaneh92, Displax [4PDA], kdrag0n
 description=Resets SafetyNet evalType from HARDWARE -> BASIC, fix for SafetyNet on Android 10-11 devices with hardware attestation.
