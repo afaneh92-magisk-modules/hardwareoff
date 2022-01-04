@@ -22,7 +22,6 @@ else
 fi
 
 ui_print "- Found Android $os, Start patching..."
-ls $replace_path
 mkdir -p $replace_path
 cp -f -p $original_keystore $replace_path
 set_perm_recursive $replace_path 0 0 0755 0755

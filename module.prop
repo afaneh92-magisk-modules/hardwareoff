@@ -1,6 +1,6 @@
 id=hardwareoff
 name=HARDWARE OFF
-version=V4.0
-versionCode=40
+version=V4.1
+versionCode=41
 author=afaneh92, Blue cat [4PDA], Displax [4PDA], kdrag0n
 description=Resets SafetyNet evalType from HARDWARE -> BASIC, fix for SafetyNet on Snapdragon/Exynos devices with hardware attestation.
