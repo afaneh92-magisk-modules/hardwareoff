@@ -8,28 +8,17 @@ unzip -o "$ZIPFILE" module.prop -d $MODPATH >&2
 patched_keystore="$MODPATH/system/bin/keystore"
 original_keystore="/bin/keystore"
 replace_path="$MODPATH/system/bin"
-# os string.
-os=$(getprop ro.build.version.release)
-major=${os%%.*}
 hardware=$(getprop ro.hardware)
 
 ui_print "- Checking Android version..."
-if [[ "$major" == "11" ]]; then
-  if [[ "$hardware" == "qcom" ]]; then
-    # qcom
-    pre="790074696d657374616d7000636f6d2e"
-    post="790000696d657374616d7000636f6d2e"
-  else
-    # exynos
-    pre="4e0074696d657374616d7000616e6472"
-    post="4e0000696d657374616d7000616e6472"
-  fi
-elif [[ "$major" == "10" ]]; then
-  pre="5d0074696d657374616d7000636f6d2e"
-  post="5d0000696d657374616d7000636f6d2e"
+if [[ "$hardware" == "qcom" ]]; then
+  # qcom
+  pre="0074696d657374616d7000636f6d2e"
+  post="0000696d657374616d7000636f6d2e"
 else
-  ui_print "- Unsupported Android version. Aborting..."
-  abort
+  # exynos
+  pre="0074696d657374616d7000616e6472"
+  post="0000696d657374616d7000616e6472"
 fi
 
 ui_print "- Found Android $os, Start patching..."
